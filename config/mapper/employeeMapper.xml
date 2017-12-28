@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.EmployeeDao">
+	<insert id="add" parameterType="Employee">
+		INSERT INTO
+			employees(lastname, email, birth, createtime, dept)
+		VALUES
+			(#{lastname}, #{email}, #{birth}, #{createtime}, #{dept})
+	</insert>
+	
+	<delete id="del" parameterType="int">
+		DELETE FROM
+			employees
+		WHERE
+			id = #{id}
+	</delete>
+	
+	<update id="update" parameterType="Employee">
+		UPDATE
+			employees
+		SET
+			lastname = #{lastname}, email = #{email}, email = #{email}, birth = #{birth}, dept = #{dept}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<select id="queryById" parameterType="int" resultType="Employee">
+		SELECT 
+			*
+		FROM 
+			employees 
+		WHERE 
+			id = #{id}
+	</select>
+	
+	<select id="queryAll" resultType="Employee">
+		SELECT 
+			*
+		FROM 
+			employees 
+		ORDER BY
+			id
+	</select>
+</mapper>
